@@ -1,4 +1,4 @@
-const notes = [{}, {
+const notes = [{
     title: 'Trip',
     body: 'I would like to go to Katberg'
 }, {
@@ -9,31 +9,30 @@ const notes = [{}, {
     body: 'Get some zunos'
 }]
 
-// // pop removes last item from the end and returns it
-// console.log(notes.pop())
-// // push adds an item to the end
-// notes.push('Note 4')
+const findNote = function (notes, noteTitle) {
+    return notes.find(function (note, index) {
+        return note.title === noteTitle
+    })
+}
 
-// // shift removes from the front
-// console.log(notes.shift())
-// // unshift adds an item to the front
-// notes.unshift('Real first note!')
+// const findNote = function (notes, noteTitle) {
+//     const index = notes.findIndex(function (note, index) {
+//         return note.title === noteTitle.toLowerCase()        
+//     })
+//     return notes[index]
+// }
 
-// // start at index 1 and remove 1 item
-// notes.splice(1, 1)
+const note = findNote(notes, 'Trip')
+console.log(note)
 
-// // start at index 1 and add an item
-// notes.splice(1, 0, 'New Note 2')
+// console.log(notes.length)
+// console.log(notes)
 
-// // start at index 1, delete 1, add new item
-// notes.splice(1, 1, 'New Note wacho')
+// cannot use indexOf on an array of objects because it uses ===
+// console.log(notes.indexOf({}))
 
-// notes.forEach(function(a, b) {
-//     console.log(a)
-//     console.log(b)
+// const index = notes.findIndex(function (note, index) {
+//     return note.title === 'Habits'
 // })
 
-console.log(notes.length)
-console.log(notes)
-
-console.log(notes.indexOf({}))
+// console.log(index)
