@@ -15,24 +15,31 @@ const findNote = function (notes, noteTitle) {
     })
 }
 
-// const findNote = function (notes, noteTitle) {
-//     const index = notes.findIndex(function (note, index) {
-//         return note.title === noteTitle.toLowerCase()        
-//     })
-//     return notes[index]
-// }
+// sorting objects is more complicated than alphabetical sorting so we do need to write a function for it.
+const sortNotes = function (notes) {
+    notes.sort(function (a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
 
-const note = findNote(notes, 'Trip')
-console.log(note)
+sortNotes(notes)
+console.log(notes)
 
-// console.log(notes.length)
-// console.log(notes)
+// const note = findNote(notes, 'Trip')
+// console.log(note)
 
-// cannot use indexOf on an array of objects because it uses ===
-// console.log(notes.indexOf({}))
+const findNotes = function (notes, query) {
+    return notes.filter(function (note, index) {
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+}
 
-// const index = notes.findIndex(function (note, index) {
-//     return note.title === 'Habits'
-// })
-
-// console.log(index)
+// console.log(findNotes(notes, 'would'))
